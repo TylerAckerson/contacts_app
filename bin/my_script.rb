@@ -1,17 +1,18 @@
 require 'addressable/uri'
 require 'rest-client'
 
-def update_user
-  url = Addressable::URI.new(
-    scheme: 'http',
-    host: 'localhost',
-    port: 3000,
-    path: '/users/4'
-  ).to_s
 
-  puts RestClient.delete(
-    url
+url = Addressable::URI.new(
+  scheme: 'http',
+  host: 'localhost',
+  port: 3000,
+  path: '/users/2'
+).to_s
+
+puts RestClient.patch(
+  url,
+  { user: { username: "Pippin" } }
   )
-end
-
-update_user
+# puts RestClient.delete(
+#   url
+# )
