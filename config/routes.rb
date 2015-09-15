@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show, :update, :create, :index, :destroy]
+  resources :users, except: [:new, :edit]
+  resources :contacts, except: [:new, :edit]
+  resources :contact_shares, only: [:create, :destroy]
   # get  "users", to: "users#index", as: "users"
   # post "users", to: "users#create"
   # get  "users/new", to: "users#new",  as: "new_user"
