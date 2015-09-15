@@ -1,6 +1,12 @@
 class ContactsController < ApplicationController
   def index
-    render json: Contact.all
+    @user = User.find_by_id(params[:user_id])
+
+    if @user.nil?
+      render json: ["No user here, so no contacts."]
+    else
+      render json: {"User" => @user.username, "Contacts" => @user.contacts, "Contact Shares" => @user.contact_shares }
+    end
   end
 
   def create
